@@ -1,0 +1,6 @@
+{
+  "name": "VaultMed - E2EE Offline Medical Records",
+  "description": "Zero-knowledge end-to-end encrypted medical records mobile application with offline-first sync, built with Angular Capacitor and NestJS PostgreSQL.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

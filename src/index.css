@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Roboto Slab', serif;
+    background-color: #ffffff;
+    color: #1e293b;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading, .shadows-into-light-regular {
+    font-family: 'Shadows Into Light', cursive;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    color: #be185d; /* Rich rose for Shadows Into Light headings on white theme */
+  }
+
+  .font-body, .font-content {
+    font-family: 'Roboto Slab', serif;
+    color: #334155; /* Slate-700 for high-contrast, elegant body reading */
+  }
+
+  /* Any remaining font-serif is mapped to Roboto Slab */
+  .font-serif {
+    font-family: 'Roboto Slab', serif;
+    color: #334155;
+  }
+}
+
+.shadows-into-light-regular {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: #be185d; /* Rose color */
+}
+
+.roboto-slab-regular {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #334155; /* Readable slate text on white */
+}
+
+/* Custom subtle scrollbars in soft rose */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fdf2f8;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(244, 114, 182, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(244, 114, 182, 0.7);
+}

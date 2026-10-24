@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: vaultmed_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-vaultmed_admin}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-secure_dev_password_change_in_prod}
+      POSTGRES_DB: ${DB_NAME:-vaultmed_db}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-vaultmed_admin} -d ${DB_NAME:-vaultmed_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vaultmed_api
+    restart: always
+    ports:
+      - "${PORT:-4000}:4000"
+    environment:
+      NODE_ENV: development
+      PORT: 4000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: ${DB_USER:-vaultmed_admin}
+      DB_PASSWORD: ${DB_PASSWORD:-secure_dev_password_change_in_prod}
+      DB_NAME: ${DB_NAME:-vaultmed_db}
+      JWT_SECRET: ${JWT_SECRET:-vaultmed_super_secret_jwt_key_at_least_32_chars_long!}
+      JWT_EXPIRATION: 86400s
+      CORS_ORIGIN: "http://localhost:4200,capacitor://localhost"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+
+volumes:
+  postgres_data:
