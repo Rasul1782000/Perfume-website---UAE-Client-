@@ -1,6 +1,6 @@
 {
-  "name": "VaultMed - E2EE Offline Medical Records",
-  "description": "Zero-knowledge end-to-end encrypted medical records mobile application with offline-first sync, built with Angular Capacitor and NestJS PostgreSQL.",
+  "name": "AURELIA — Haute Parfumerie Paris & Dubai",
+  "description": "Artisanal Haute Parfumerie and Royal Arabian Oud Extraits de Parfum e-commerce boutique styled after Amazon and Sephora.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

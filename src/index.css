@@ -2,45 +2,65 @@
 
 @layer base {
   body {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: #ffffff;
     color: #1e293b;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
   }
 
-  h1, h2, h3, h4, h5, h6, .font-heading, .shadows-into-light-regular {
-    font-family: 'Shadows Into Light', cursive;
-    font-weight: 400;
-    font-style: normal;
-    letter-spacing: 0.02em;
-    color: #be185d; /* Rich rose for Shadows Into Light headings on white theme */
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Cormorant Garamond', 'Cinzel', Garamond, 'Didot', 'Bodoni MT', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: #9f1239; /* Deep Haute Parfumerie Rose / Bordeaux on pure white */
+    line-height: 1.15;
   }
 
-  .font-body, .font-content {
-    font-family: 'Roboto Slab', serif;
-    color: #334155; /* Slate-700 for high-contrast, elegant body reading */
+  .font-brand, .font-cinzel {
+    font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: 0.16em;
   }
 
-  /* Any remaining font-serif is mapped to Roboto Slab */
+  .font-body, .font-content, .font-sans {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #334155; /* Slate-700 for crystal-clear readability */
+  }
+
   .font-serif {
-    font-family: 'Roboto Slab', serif;
-    color: #334155;
+    font-family: 'Cormorant Garamond', Garamond, 'Didot', Georgia, serif;
+  }
+
+  .font-arabic, [dir="rtl"], .arabic-title {
+    font-family: 'Amiri', 'Traditional Arabic', serif;
+    letter-spacing: 0;
   }
 }
 
+/* Fallback & compatibility classes transformed into Luxury Haute Parfumerie styling */
 .shadows-into-light-regular {
-  font-family: "Shadows Into Light", cursive;
-  font-weight: 400;
-  font-style: normal;
-  color: #be185d; /* Rose color */
+  font-family: 'Cormorant Garamond', 'Cinzel', Georgia, serif !important;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: #9f1239;
 }
 
 .roboto-slab-regular {
-  font-family: "Roboto Slab", serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
   font-weight: 400;
-  font-style: normal;
-  color: #334155; /* Readable slate text on white */
+  color: #334155;
+}
+
+/* Luxury accent typography utilities */
+.font-display-serif {
+  font-family: 'Cormorant Garamond', 'Cinzel', Georgia, serif;
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+  font-style: italic;
 }
 
 /* Custom subtle scrollbars in soft rose */
