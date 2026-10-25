@@ -54,6 +54,9 @@ export interface PerfumeItem {
   sillage: 'Intimate Skin Scent' | 'Moderate Trail' | 'Enveloping Aura' | 'Imperial Grand Sillage';
   seasons: string[];
   badge?: string;
+  hasRareIngredients?: boolean;
+  rareIngredients?: string[];
+  sustainablyHarvested?: boolean;
   dealOfTheDay?: boolean;
   dealEndsAt?: string;
   rating: number;
@@ -106,6 +109,9 @@ export const PERFUMES_LIST: PerfumeItem[] = [
     sillage: 'Imperial Grand Sillage',
     seasons: ['All Seasons', 'Royal Ceremonies', 'Evening'],
     badge: 'Arabian Royal Exclusive',
+    hasRareIngredients: true,
+    rareIngredients: ['Wild 18-Year Cambodian Agarwood', 'Taif Mountain Rose', 'Black Ambergris'],
+    sustainablyHarvested: true,
     dealOfTheDay: true,
     rating: 4.99,
     reviewsCount: 184,
@@ -192,6 +198,9 @@ export const PERFUMES_LIST: PerfumeItem[] = [
     sillage: 'Enveloping Aura',
     seasons: ['All Seasons', 'Grand Evening', 'Ceremonial'],
     badge: 'Maison Masterpiece',
+    hasRareIngredients: true,
+    rareIngredients: ['3-Year Aged Tuscan Orris Butter', 'Provence Mimosa Blossom'],
+    sustainablyHarvested: true,
     rating: 5.0,
     reviewsCount: 96,
     inStock: true,
@@ -266,6 +275,9 @@ export const PERFUMES_LIST: PerfumeItem[] = [
     sillage: 'Enveloping Aura',
     seasons: ['Autumn', 'Winter', 'Nocturne'],
     badge: 'Pure Extrait',
+    hasRareIngredients: true,
+    rareIngredients: ['Dawn-Picked Centifolia Rose de Grasse', 'Damask Rose Absolute'],
+    sustainablyHarvested: true,
     rating: 4.98,
     reviewsCount: 112,
     inStock: true,
@@ -334,6 +346,9 @@ export const PERFUMES_LIST: PerfumeItem[] = [
     sillage: 'Imperial Grand Sillage',
     seasons: ['Autumn', 'Winter', 'Evenings'],
     badge: 'Deals of the Day',
+    hasRareIngredients: true,
+    rareIngredients: ['Kashmiri Red Gold Saffron Threads', 'Pure Amber Resin Tears'],
+    sustainablyHarvested: true,
     dealOfTheDay: true,
     rating: 4.96,
     reviewsCount: 148,
@@ -401,6 +416,9 @@ export const PERFUMES_LIST: PerfumeItem[] = [
     sillage: 'Moderate Trail',
     seasons: ['All Seasons', 'Signature Daily', 'Evening'],
     badge: 'Bestseller',
+    hasRareIngredients: true,
+    rareIngredients: ['Certified Sustainable Australian Sandalwood', 'Florentine Orris'],
+    sustainablyHarvested: true,
     rating: 4.95,
     reviewsCount: 220,
     inStock: true,
@@ -468,6 +486,9 @@ export const PERFUMES_LIST: PerfumeItem[] = [
     sillage: 'Imperial Grand Sillage',
     seasons: ['Autumn', 'Winter', 'Statement Nights'],
     badge: 'Bold & Noble',
+    hasRareIngredients: true,
+    rareIngredients: ['Royal Green Hojari Frankincense', 'Ancient Birch Tar'],
+    sustainablyHarvested: true,
     rating: 4.92,
     reviewsCount: 88,
     inStock: true,
@@ -534,6 +555,9 @@ export const PERFUMES_LIST: PerfumeItem[] = [
     sillage: 'Moderate Trail',
     seasons: ['Spring', 'Summer', 'Daytime'],
     badge: 'Solar Refreshment',
+    hasRareIngredients: false,
+    rareIngredients: [],
+    sustainablyHarvested: true,
     rating: 4.91,
     reviewsCount: 130,
     inStock: true,
@@ -600,6 +624,9 @@ export const PERFUMES_LIST: PerfumeItem[] = [
     sillage: 'Enveloping Aura',
     seasons: ['Autumn', 'Winter', 'Intimate Nights'],
     badge: 'Award Winner',
+    hasRareIngredients: true,
+    rareIngredients: ['Wild Madagascar Bourbon Vanilla Pods', 'Benzoin Siam Tears'],
+    sustainablyHarvested: true,
     rating: 4.96,
     reviewsCount: 175,
     inStock: true,

@@ -97,29 +97,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-pink-100 shadow-xs shadow-pink-100/40">
-      {/* 1. Top Announcement Bar */}
-      <div className="bg-gradient-to-r from-rose-700 via-pink-600 to-rose-700 text-white text-[11px] py-1.5 px-4 font-body tracking-wider uppercase flex items-center justify-between">
-        <div className="hidden sm:flex items-center gap-4 text-pink-100">
-          <span className="flex items-center gap-1.5">
-            <Truck className="w-3.5 h-3.5 text-pink-200" />
-            Complimentary Worldwide Express Courier over $150
-          </span>
-          <span>·</span>
-          <span>2 Free Discovery Vials (French & Arabian) with Every Flacon</span>
-        </div>
-
-        <div className="mx-auto sm:mx-0 flex items-center gap-3">
-          <span className="font-semibold text-white">
-            VIP Privilege: Use code <strong className="underline decoration-pink-300 font-mono">AURELIA15</strong> for 15% off
-          </span>
-          <span className="hidden md:inline-block">·</span>
-          <span className="hidden md:inline-flex items-center gap-1 text-[10px] text-pink-200">
-            <Globe className="w-3 h-3" /> Paris · Grasse · Dubai · Muscat
-          </span>
-        </div>
-      </div>
-
-      {/* 2. Main Header Bar (Amazon/Sephora Layout) */}
+      {/* Main Header Bar (Clean Minimalist Luxury Layout) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4 md:gap-8">
         {/* Brand Wordmark */}
         <div className="flex items-center gap-3 shrink-0">

@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { Sparkles, ArrowRight, RotateCcw, Check, ShoppingBag, Eye } from 'lucide-react';
 import { PERFUMES_LIST, PerfumeItem } from '../data/perfumes';
+import { QuizProfile } from '../utils/scentMatch';
 
 interface ScentFinderQuizProps {
   onSelectPerfume: (perfume: PerfumeItem) => void;
   onAddToCart: (perfume: PerfumeItem) => void;
+  onQuizComplete?: (profile: QuizProfile, recommendedPerfume: PerfumeItem) => void;
+  onResetQuiz?: () => void;
 }
 
 export const ScentFinderQuiz: React.FC<ScentFinderQuizProps> = ({
   onSelectPerfume,
   onAddToCart,
+  onQuizComplete,
+  onResetQuiz,
 }) => {
   const [step, setStep] = useState<number>(1);
   const [aura, setAura] = useState<string>('intimate');
@@ -30,15 +35,30 @@ export const ScentFinderQuiz: React.FC<ScentFinderQuizProps> = ({
     } else if (selectedWorld === 'gourmand') {
       match = PERFUMES_LIST.find((p) => p.id === 'tonka-vanille-amber') || PERFUMES_LIST[3];
     } else {
-      match = PERFUMES_LIST.find((p) => p.id === 'aurore-doree') || PERFUMES_LIST[4];
+      match = PERFUMES_LIST.find((p) => p.id === 'oud-imperial-royal') || PERFUMES_LIST[4];
     }
     setRecommendation(match);
     setStep(4);
+
+    if (onQuizComplete) {
+      onQuizComplete(
+        {
+          world: selectedWorld,
+          aura,
+          season,
+          recommendedId: match.id,
+        },
+        match
+      );
+    }
   };
 
   const resetQuiz = () => {
     setStep(1);
     setRecommendation(null);
+    if (onResetQuiz) {
+      onResetQuiz();
+    }
   };
 
   return (

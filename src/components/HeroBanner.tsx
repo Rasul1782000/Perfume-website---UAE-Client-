@@ -30,8 +30,8 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
       ctaText: 'Explore French Atelier',
       ctaAction: onExploreFrench,
       accentLabel: 'Palais-Royal Heritage',
-      image: '/src/assets/images/hero_luxury_perfume_flacon_1792865209285.jpg',
-      perfumeHighlight: featuredPerfumes.find((p) => p.id === 'aurore-doree') || featuredPerfumes[0],
+      image: '/src/assets/images/perfume_grasse_atelier_harvest_1792958212853.jpg',
+      perfumeHighlight: featuredPerfumes.find((p) => p.id === 'velvet-rose-noire') || featuredPerfumes[0],
     },
     {
       badge: 'Arabian Royal Heritage · Dubai & Muscat',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Sparkles, ShoppingBag, Eye, Star, Check } from 'lucide-react';
+import { X, Sparkles, ShoppingBag, Eye, Star, Check, Leaf } from 'lucide-react';
 import { PerfumeItem } from '../data/perfumes';
 
 interface QuickViewModalProps {
@@ -55,9 +55,17 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
         <div className="w-full md:w-1/2 p-6 flex flex-col justify-between space-y-4">
           <div className="space-y-3">
             <div>
-              <span className="text-[11px] font-mono uppercase tracking-widest text-rose-600 font-semibold block">
-                {perfume.family} · {perfume.concentration}
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-rose-600 font-semibold block">
+                  {perfume.family} · {perfume.concentration}
+                </span>
+                {perfume.hasRareIngredients && perfume.sustainablyHarvested && (
+                  <span className="inline-flex items-center gap-1 text-[8.5px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold uppercase tracking-wider shadow-2xs">
+                    <Leaf className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
+                    <span>Sustainably Harvested</span>
+                  </span>
+                )}
+              </div>
               <h2 className="text-3xl font-heading text-rose-800 leading-tight mt-0.5">{perfume.name}</h2>
               {perfume.arabicName && (
                 <span className="text-sm font-body text-amber-800 font-medium">{perfume.arabicName}</span>

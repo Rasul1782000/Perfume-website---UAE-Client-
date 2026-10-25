@@ -16,6 +16,7 @@ import {
   ArrowRight,
   Share2,
   Gift,
+  Leaf,
 } from 'lucide-react';
 import { PerfumeItem, BundleItem } from '../data/perfumes';
 
@@ -163,6 +164,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   {perfume.badge}
                 </span>
               )}
+              {perfume.hasRareIngredients && perfume.sustainablyHarvested && (
+                <span className="text-[9.5px] font-mono uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold shadow-xs flex items-center gap-1.5">
+                  <Leaf className="w-3 h-3 text-emerald-600 shrink-0" />
+                  <span>Sustainably Harvested</span>
+                </span>
+              )}
             </div>
 
             {/* Hover Zoom Prompt */}
@@ -195,9 +202,17 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         <div className="lg:col-span-6 space-y-6">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono uppercase tracking-widest text-rose-600 font-semibold">
-                {perfume.brand}
-              </span>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs font-mono uppercase tracking-widest text-rose-600 font-semibold">
+                  {perfume.brand}
+                </span>
+                {perfume.hasRareIngredients && perfume.sustainablyHarvested && (
+                  <span className="inline-flex items-center gap-1 text-[9px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold uppercase tracking-wider shadow-2xs">
+                    <Leaf className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
+                    <span>Sustainably Harvested Botanicals</span>
+                  </span>
+                )}
+              </div>
               <button
                 onClick={() => onToggleWishlist(perfume)}
                 className="p-2 rounded-full border border-pink-200 bg-white hover:bg-rose-50 text-slate-600 hover:text-rose-600 transition-all flex items-center gap-1.5 text-xs font-body"
@@ -220,6 +235,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             )}
 
             <p className="text-sm text-slate-600 font-body leading-relaxed">{perfume.subtitle}</p>
+
+            {/* Rare Ingredients Origin Banner */}
+            {perfume.hasRareIngredients && perfume.rareIngredients && perfume.rareIngredients.length > 0 && (
+              <div className="flex items-center gap-2 text-xs font-mono text-emerald-900 bg-emerald-50/80 px-3 py-1.5 rounded-xl border border-emerald-200/80 shadow-2xs">
+                <Leaf className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <span className="font-bold">Artisanal Reserve Harvest:</span>
+                <span>{perfume.rareIngredients.join(' · ')}</span>
+              </div>
+            )}
 
             {/* Ratings & Proof */}
             <div className="flex items-center gap-4 text-xs font-body pt-1">

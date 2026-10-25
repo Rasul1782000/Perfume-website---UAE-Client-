@@ -21,7 +21,7 @@ export const FragranceFamiliesGrid: React.FC<FragranceFamiliesGridProps> = ({ on
       subtitle: 'Grasse Centifolia Rose & French Jasmine',
       origin: 'French Atelier' as ScentOrigin,
       family: 'Floral' as ScentFamily,
-      image: '/src/assets/images/perfume_rose_noir_flacon_1792865210916.jpg',
+      image: '/src/assets/images/perfume_grasse_atelier_harvest_1792958212853.jpg',
       badge: 'Grasse Harvest',
     },
     {
@@ -29,7 +29,7 @@ export const FragranceFamiliesGrid: React.FC<FragranceFamiliesGridProps> = ({ on
       subtitle: 'Florentine Orris Butter & Wild Honey',
       origin: 'French Atelier' as ScentOrigin,
       family: 'Amber' as ScentFamily,
-      image: '/src/assets/images/hero_luxury_perfume_flacon_1792865209285.jpg',
+      image: '/src/assets/images/perfume_crystal_flacons_gallery_1792958227158.jpg',
       badge: 'Imperial Reserve',
     },
     {

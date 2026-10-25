@@ -12,8 +12,10 @@ import {
   Check,
   SlidersHorizontal,
   X,
+  Leaf,
 } from 'lucide-react';
 import { PerfumeItem, ScentFamily, ScentOrigin } from '../data/perfumes';
+import { ScrollingPrivilegesMarquee } from './ScrollingPrivilegesMarquee';
 
 interface CatalogPLPProps {
   perfumes: PerfumeItem[];
@@ -381,6 +383,15 @@ export const CatalogPLP: React.FC<CatalogPLPProps> = ({
                           {perfume.badge}
                         </span>
                       )}
+                      {perfume.hasRareIngredients && perfume.sustainablyHarvested && (
+                        <span
+                          title={perfume.rareIngredients ? `Sustainably harvested rare botanicals: ${perfume.rareIngredients.join(', ')}` : 'Sustainably harvested rare ingredients'}
+                          className="text-[8.5px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50/95 text-emerald-800 border border-emerald-200/90 backdrop-blur-xs font-bold shadow-xs flex items-center gap-1"
+                        >
+                          <Leaf className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
+                          <span>Sustainably Harvested</span>
+                        </span>
+                      )}
                     </div>
 
                     {/* Wishlist Button with Heart Micro-Animation */}
@@ -423,9 +434,22 @@ export const CatalogPLP: React.FC<CatalogPLPProps> = ({
                     {/* Card Content & Metadata */}
                     <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                       <div>
-                        {/* Family & Concentration Metadata */}
-                        <div className="flex items-center justify-between text-xs font-mono text-slate-500">
-                          <span className="text-rose-600 font-semibold">{perfume.family}</span>
+                        {/* Family & Concentration & Sustainably Harvested Metadata */}
+                        <div className="flex flex-wrap items-center justify-between gap-1 text-xs font-mono text-slate-500">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="text-rose-600 font-semibold">{perfume.family}</span>
+                            <span className="text-slate-300">·</span>
+                            <span className="text-slate-500 font-medium">{perfume.concentration}</span>
+                            {perfume.hasRareIngredients && perfume.sustainablyHarvested && (
+                              <span
+                                title={perfume.rareIngredients ? `Sustainably harvested rare botanicals: ${perfume.rareIngredients.join(', ')}` : 'Certified sustainable artisanal harvest'}
+                                className="inline-flex items-center gap-1 text-[8.5px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold tracking-wider uppercase shadow-2xs"
+                              >
+                                <Leaf className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
+                                <span>Sustainably Harvested</span>
+                              </span>
+                            )}
+                          </div>
                           <span className="flex items-center gap-1 text-slate-700">
                             <Star className="w-3 h-3 fill-rose-500 text-rose-500" />
                             <span className="font-bold">{perfume.rating}</span>
@@ -450,6 +474,15 @@ export const CatalogPLP: React.FC<CatalogPLPProps> = ({
                         <p className="text-xs text-slate-600 font-body line-clamp-2 mt-1">
                           {perfume.subtitle}
                         </p>
+
+                        {/* Rare Ingredients Authenticity Callout if applicable */}
+                        {perfume.hasRareIngredients && perfume.rareIngredients && perfume.rareIngredients.length > 0 && (
+                          <div className="mt-2 flex items-center gap-1.5 text-[10px] font-mono text-emerald-900 bg-emerald-50/70 px-2.5 py-1 rounded-lg border border-emerald-200/80">
+                            <Leaf className="w-3 h-3 text-emerald-600 shrink-0" />
+                            <span className="font-bold">Rare Harvest:</span>
+                            <span className="truncate">{perfume.rareIngredients.join(' · ')}</span>
+                          </div>
+                        )}
                       </div>
 
                       {/* Key Note Chips */}
@@ -500,6 +533,11 @@ export const CatalogPLP: React.FC<CatalogPLPProps> = ({
             </div>
           )}
         </div>
+      </div>
+
+      {/* Scrolling Privileges Animation Below All Collections */}
+      <div className="pt-8">
+        <ScrollingPrivilegesMarquee />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Flame, Clock, ShoppingBag, Eye, Heart, Sparkles, Check } from 'lucide-react';
+import { Flame, Clock, ShoppingBag, Eye, Heart, Sparkles, Check, Leaf } from 'lucide-react';
 import { PerfumeItem } from '../data/perfumes';
 
 interface DealsCountdownProps {
@@ -130,12 +130,18 @@ export const DealsCountdown: React.FC<DealsCountdownProps> = ({
                 {/* Content side */}
                 <div className="flex-1 flex flex-col justify-between space-y-3">
                   <div>
-                    <div className="flex items-center gap-2 text-xs font-mono">
+                    <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
                       <span className="text-rose-600 font-bold">{perfume.family}</span>
                       <span className="text-pink-300">·</span>
                       <span className="text-slate-600">{perfume.concentration}</span>
                       <span className="text-pink-300">·</span>
                       <span className="text-slate-600">{perfume.concentrationPct}% Pure Oil</span>
+                      {perfume.hasRareIngredients && perfume.sustainablyHarvested && (
+                        <span className="inline-flex items-center gap-1 text-[8.5px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold uppercase tracking-wider shadow-2xs">
+                          <Leaf className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
+                          <span>Sustainably Harvested</span>
+                        </span>
+                      )}
                     </div>
 
                     <h3

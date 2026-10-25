@@ -44,6 +44,9 @@ import { ScentFinderQuiz } from './components/ScentFinderQuiz';
 import { ToastContainer, ToastMessage } from './components/ToastContainer';
 import { ReferoFrame, DeviceModel, DeviceFinish } from './components/ReferoFrame';
 import { MobileBoutiqueApp } from './components/MobileBoutiqueApp';
+import { QuizProfile } from './utils/scentMatch';
+import { ScrollingPrivilegesMarquee } from './components/ScrollingPrivilegesMarquee';
+import { VisualCatalogGallery } from './components/VisualCatalogGallery';
 
 type ActiveView =
   | 'home'
@@ -61,6 +64,14 @@ export default function App() {
   const [activeNav, setActiveNav] = useState<string>('all');
   const [selectedPerfume, setSelectedPerfume] = useState<PerfumeItem | null>(PERFUMES_LIST[0]);
   const [quickViewPerfume, setQuickViewPerfume] = useState<PerfumeItem | null>(null);
+
+  // Scent Quiz Profile State (synced across desktop and mobile simulator)
+  const [quizProfile, setQuizProfile] = useState<QuizProfile | null>({
+    world: 'woody',
+    aura: 'intimate',
+    season: 'autumn',
+    recommendedId: 'santal-mystique',
+  });
 
   // PLP Filter & Sort State
   const [selectedOrigin, setSelectedOrigin] = useState<'All' | ScentOrigin>('All');
@@ -536,6 +547,21 @@ export default function App() {
               </div>
             </section>
 
+            {/* Continuous Scrolling Privileges Animation (Positioned Below Collections) */}
+            <ScrollingPrivilegesMarquee
+              onCopyPromo={(code) => {
+                setPromoCode(code);
+                setPromoApplied(true);
+                addToast('success', 'VIP Promo Applied', `Code ${code} activated for 15% discount`);
+              }}
+            />
+
+            {/* Visual Lookbook & Photographic Flacon Catalog Showcase */}
+            <VisualCatalogGallery
+              onSelectPerfume={handleSelectPerfume}
+              onExploreCatalog={() => setActiveView('catalog')}
+            />
+
             {/* Social Proof: Verified Buyer Reviews Carousel */}
             <ReviewsCarousel />
 
@@ -688,6 +714,11 @@ export default function App() {
             <ScentFinderQuiz
               onSelectPerfume={handleSelectPerfume}
               onAddToCart={(p) => handleAddToCart(p, '50ml')}
+              onQuizComplete={(profile, rec) => {
+                setQuizProfile(profile);
+                addToast('success', 'Olfactory Signature Saved', `${profile.world} · ${profile.aura}`);
+              }}
+              onResetQuiz={() => setQuizProfile(null)}
             />
           </div>
         )}
@@ -767,6 +798,8 @@ export default function App() {
                   onAddToCart={(p) => handleAddToCart(p, '50ml')}
                   cartCount={cartCount}
                   onOpenCart={() => setIsSlideCartOpen(true)}
+                  quizProfile={quizProfile}
+                  onUpdateQuizProfile={setQuizProfile}
                 />
               </ReferoFrame>
             </div>
